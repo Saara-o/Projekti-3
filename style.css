@@ -1,23 +1,23 @@
 body {
     background-color: #FAF9F6;
-    color: #5a4741;
+    color: #2e3a46;
     text-align: center;
     font-family: "Playfair Display", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
+}
 
 #header {
     background-color: #ff7d27;
 }
 
 h1 {
-    color: #F5F5F5;
+    color: #FAF9F6;
     padding: 80px;
     font-family: "Playfair Display", serif;
-    font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+    font-size: 55px;
 }
 
 #hakuBtn {
@@ -33,15 +33,15 @@ h5 {
     padding-bottom: 15px;
 }
 
-.search-icon {
-    color: #9CAF88;
-    margin-left: 10px;
+#hakuIkoni {
+    color:#91a17f;
+    margin: 5px;
     background-color: transparent;
     border: none;
 }
 
 .hakukentta {
-    color: #9CAF88;
+    color: #91a17f;
     outline: none;
     border: none;
     background: transparent;
@@ -49,7 +49,7 @@ h5 {
     max-width: 300px;
     font-size: large;
     margin: 6px;
-    text-align: center;
+    text-align: left;
 }
 
 .hakuwrapper {
@@ -87,7 +87,6 @@ h5 {
     text-align: center;
     padding-top: 15px;
     padding-bottom: 10px;
-    font-family: Verdana, sans-serif;
 }
 
 .reseptikortti img {
@@ -103,10 +102,10 @@ h5 {
     padding: 8px;
     margin: 0px;
 }
+
 .reseptikortti p {
     font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
+    font-weight: 300;
     font-style: normal;
     margin-top: -2px;
     margin-bottom: -2px;
@@ -116,9 +115,61 @@ footer {
     margin-top: 40px;
     position: sticky;
     bottom: 0px;
-    padding: 5px;
+    padding: 10px;
 }
 
 footer p {
     margin-bottom: -2px;
+}
+
+a {
+    color: #394132;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #667258;
+}
+
+#kotiBtn {
+    text-align: left;
+    margin: 10px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 200,
+  'GRAD' 0,
+  'opsz' 24;
+  font-size: 50px;
+  color: #2e3a46;
+}
+
+#resepti {
+    padding: 50px;
+}
+
+#resepti h2 {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+#resepti img {
+    margin: 0 auto;
+    height: auto;
+    border-radius: 8px;
+}
+
+#resepti p {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    margin-top: 20px;
+    margin-bottom: -15px;
+}
+
+#ohje {
+    padding: 40px;
 }
