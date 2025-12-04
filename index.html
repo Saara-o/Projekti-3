@@ -22,11 +22,23 @@
         <h1>CookPot</h1>
     </div>
     
+    <h5 class = "hakuotsikko">Explore meals by category</h5>
+
     <div class="container-fluid" id = "navi">
+        <div class = "btn-group d-flex justify-content-center" role = "group" aria-label = "Hakutyyppi" id = "kategoriat">
+            <button class="hakutyyppiBtn" data-kategoria="vegetarian">Vegetarian</button>
+            <button class="hakutyyppiBtn" data-kategoria="vegan">Vegan</button>
+            <button class="hakutyyppiBtn" data-kategoria="seafood">Seafood</button>
+            <button class="hakutyyppiBtn" data-kategoria="chicken">Chicken</button>
+            <button class="hakutyyppiBtn" data-kategoria="beef">Beef</button>
+            <button class="hakutyyppiBtn" data-kategoria="pork">Pork</button>
+            <button class="hakutyyppiBtn" data-kategoria="dessert">Dessert</button>
+        </div>
+
         <div class="row justify-content-center">
-            <!-- Hakukenttä, kenttä tyhjenee, kun hiirellä klikkaa kenttää-->
+            <!-- Hakukenttä, kenttä tyhjenee, kun hiirellä klikkaa kenttää -->
             <div class = "col-sm-7" id = "hakuBtn">
-                <h5 id = "hakuotsikko">Type a recipe name and press Enter to explore meals.</h5>
+                <h5 class = "hakuotsikko">Or search for recipe by name</h5>
                 <form action = "submit">
                     <div class = "hakuwrapper">
                         <span class = "search-icon material-symbols-outlined" id = "hakuIkoni">search</span>
@@ -34,7 +46,6 @@
                     </div>
                 </form>
             </div>
-            <!-- Lisätään kategoria-näppäimiä? -->
         </div>
     </div>
 
