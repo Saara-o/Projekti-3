@@ -1,6 +1,30 @@
 // Oletuksena haetaan reseptin nimen mukaan
 let hakutyyppi = "strMeal"
 
+// Palautetaan tallennetut tulokset
+$(document).ready(function(){
+    let tallennettu = localStorage.getItem("tulokset");
+
+    if(tallennettu) {
+        let meals = JSON.parse(tallennettu);
+
+        $("#tulokset").empty();
+
+        $.each(meals, function (index, meal) {
+            let mealURL = "resepti.html?id=" + meal.idMeal
+
+            $("#tulokset").append(`
+                <div class = "reseptikortti"> 
+                    <a href = "${mealURL}"> 
+                        <img src = "${meal.strMealThumb}" alt = "${meal.strMeal}">
+                        <h2>${meal.strMeal}</h2>
+                    </a>
+                </div>
+            `);
+        });
+    }
+});
+
 // Reseptien hakeminen kategoriat-painikkeilla
 $(document).ready(function() {
     $(".hakutyyppiBtn").click(function () {
@@ -13,6 +37,9 @@ $(document).ready(function() {
             $(this).removeClass("active");
             // Tyhjennetään tulokset, kun painike ei ole enää aktiivinen
             $("#tulokset").empty();
+            // Poistetaan myös tallennetut
+            localStorage.removeItem("tulokset");
+            localStorage.removeItem("kategoria");
             return;
         
         // Muuten vaihdetaan aktiivinen painike
@@ -43,38 +70,44 @@ $(document).ready(function() {
                 // Poistetaan vanhat hakutulokset
                 $("#tulokset").empty();
 
-                    // Näytetään tulokset-elementissä
-                    for (let i = 0; i < data.meals.length; i++) {
-                        let meal = data.meals[i];
-                        let mealURL = "resepti.html?id=" + meal.idMeal;
+                // Näytetään tulokset-elementissä
+                for (let i = 0; i < data.meals.length; i++) {
+                    let meal = data.meals[i];
+                    let mealURL = "resepti.html?id=" + meal.idMeal;
                         
-                        // Luodaan reseptistä korttinäkymä, reseptikortti linkkinä reseptiin
-                        $("#tulokset").append(`
-                            <div class = "reseptikortti"> 
-                                <a href = "${mealURL}"> 
-                                    <img src = "${meal.strMealThumb}" alt = "${meal.strMeal}">
-                                    <h2>${meal.strMeal}</h2>
-                                </a>    
-                                <p>Category: ${meal.strCategory}</p>
-                                <p>Region: ${meal.strArea}</p>
-                            </div>
-                        `);
-                        }
-                    })
-                    .catch((error) => {
-                        if (error.response) {
-                            console.error(error.response.data);
-                            console.error(error.response.status);
-                            console.error(error.response.headers);
-                        } else if (error.request) {
-                            console.error(error.request);
-                        } else {
-                            console.error("Error", error.message);
-                        }
-                        $("#tulokset").text("There was an error while fetching recipes. Please try again later.")
-                    });
+                    // Luodaan reseptistä korttinäkymä, reseptikortti linkkinä reseptiin
+                    $("#tulokset").append(`
+                        <div class = "reseptikortti"> 
+                            <a href = "${mealURL}"> 
+                                <img src = "${meal.strMealThumb}" alt = "${meal.strMeal}">
+                                <h2>${meal.strMeal}</h2>
+                            </a>
+                        </div>
+                    `);
+                }
+
+                // Poistetaan vanhat tulokset localStoragesta
+                localStorage.removeItem("tulokset");
+
+                // Tallennetaan tulokset localStorageen
+                localStorage.setItem("tulokset", JSON.stringify(data.meals));
+            })
+
+            .catch((error) => {
+                if (error.response) {
+                    console.error(error.response.data);
+                    console.error(error.response.status);
+                        console.error(error.response.headers);
+                    } else if (error.request) {
+                        console.error(error.request);
+                    } else {
+                        console.error("Error", error.message);
+                    }
+                    $("#tulokset").text("There was an error while fetching recipes. Please try again later.")
                 });
+
             });
+        });
 
 // Tekstikenttä: API -kutsu tapahtuu Enter-näppäintä painamalla, haetaan reseptin nimen mukaan
 $(document).ready(function() {
@@ -127,7 +160,11 @@ $(document).ready(function() {
                             </div>
                         `);
                     }
+
+                    // Tallennetaan tulokset localStorageen
+                    localStorage.setItem("tulokset", JSON.stringify(data.meals));
                 })
+
                 .catch((error) => {
                     if (error.response) {
                         console.error(error.response.data);
