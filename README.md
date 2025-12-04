@@ -36,10 +36,10 @@ Projektin toteutuksessa on käytetty seuraavia teknologioita:
 - HTML: Käyttöliittymän rakenteen luominen
 - CSS: Ulkoasun, värien ja responsiivisuuden hallinta
 - Bootstrap: Responsiivinen ulkoasu ja käyttöliittymän muotoilu
-- JavaScript: DOM-manipulaatio, tapahtumien käsittely ja dynaamisen sisällön tuottaminen
+- JavaScript: Sovelluslogiikka ja localStoragen tallennukset ja poisto
 - Axios: Tiedonhaku ulkoisesta rajapinnasta
-- jQuery: DOM-scriptaus ja muu toiminnallisuus
-- Google Fonts: Hakukentän kuvakkeen esittäminen, fontit ja nuoli-ikoni.
+- jQuery: DOM-scriptaus ja tapahtumat
+- Google Fonts: Hakukentän kuvakkeen esittäminen, fontit ja nuoli-kuvake.
 - Visual Studio Code: Kehitysympäristö
 
 ## Asennus
